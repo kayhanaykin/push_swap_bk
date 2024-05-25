@@ -6,14 +6,14 @@
 #    By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 17:12:04 by kaykin            #+#    #+#              #
-#    Updated: 2024/05/25 11:27:50 by kaykin           ###   ########.fr        #
+#    Updated: 2024/05/25 15:37:01 by kaykin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= push_swap
 CC			= gcc
 FLAGS 		= -Wall -Wextra -Werror -s
-SRCS		= 
+SRCS		= helper_args.c push_swap.c helper_stack.c error.c
 
 OBJS		:= $(SRCS:.c=.o)
 
