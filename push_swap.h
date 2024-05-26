@@ -6,7 +6,7 @@
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 11:29:06 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/26 10:54:13 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/26 15:17:24 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,26 @@ typedef struct s_stacks
 	int		count_b;
 }			t_stacks;
 
+# define SA "sa"
+# define SB "sb"
+# define SS "ss"
+# define PA "pa"
+# define PB "pb"
+# define RA "ra"
+# define RB "rb"
+# define RR "rr"
+# define RRA "rra"
+# define RRB "rrb"
+# define RRR "rrr"
+
 char		**parse_args(int ac, char **av);
 t_stacks	*new_stack(void);
 void		add_args_to_stack(t_stacks *stacks);
 void		put_error_and_free(char *msg, t_stacks *stacks);
 void		check_args(t_stacks *stacks);
 int			is_sort(t_list *stack);
+void		action_optimise(t_stacks *stacks);
+void		actions(t_stacks *stacks, char *str);
+
+
 #endif

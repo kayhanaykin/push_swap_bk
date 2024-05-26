@@ -6,7 +6,7 @@
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:00:59 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/26 11:28:37 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/26 14:42:47 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ char	**parse_args(int ac, char **av)
 	char	*temp;
 	char	**result;
 
-	str = ft_strdup("");
 	i = 0;
+	str = ft_strdup("");
 	if (ac == 2)
-		str = av[1];
+		str = ft_strdup(av[1]);
 	else if (ac > 2)
 		while (++i < ac)
 		{
@@ -31,12 +31,17 @@ char	**parse_args(int ac, char **av)
 			str = ft_strjoin(temp, av[i]);
 			free(temp);
 		}
+	if (ft_strlen(str) < 2)
+	{
+		free(str);
+		exit(0);
+	}
 	result = ft_split(str, ' ');
 	free(str);
 	return (result);
 }
 
-void	check_args(t_stacks *stacks)
+static void	check_args_is_number(t_stacks *stacks)
 {
 	int		i;
 	int		j;
@@ -58,4 +63,31 @@ void	check_args(t_stacks *stacks)
 		}
 		i++;
 	}
+}
+
+static void	check_args_is_duplicate(t_stacks *stacks)
+{
+	int		i;
+	int		j;
+	char	**args;
+
+	i = 0;
+	args = stacks->args;
+	while (args[i])
+	{
+		j = i + 1;
+		while (args[j])
+		{
+			if (ft_atoi(args[j]) == ft_atoi(args[i]))
+				put_error_and_free("Duplicate data", stacks);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	check_args(t_stacks *stacks)
+{
+	check_args_is_number(stacks);
+	check_args_is_duplicate(stacks);
 }

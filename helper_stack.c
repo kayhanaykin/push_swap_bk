@@ -6,7 +6,7 @@
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:43:02 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/26 12:20:08 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/26 14:31:59 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,11 @@ void	add_args_to_stack(t_stacks *stacks)
 	i = 0;
 	while (args[i])
 	{
-		num = malloc(sizeof(int));
-		if (!num)
-        {
-            put_error_and_free("Memory allocation failed", stacks);
-            return;
-        }
+		num = (int *)malloc(sizeof(int));
+		if (num == NULL)
+			put_error_and_free("Error: Allocation Failure", stacks);
 		*num = ft_atoi(args[i++]);
-		// ft_printf("%d\n", *num);
-		// ft_printf("%p\n", stacks->stack_a);
-		ft_lstadd_back(&stacks->stack_a, ft_lstnew((num)));
-		ft_printf("%d\n", *(int *)stacks->stack_a->content);
-		free(num);
-		// stacks->count_a++;
+		ft_lstadd_back(&stacks->stack_a, ft_lstnew(num));
+		stacks->count_a++;
 	}
-	// if (!is_sort(stacks->stack_a))
-	// 	put_error_and_free("the numbers are already in order", stacks);
 }

@@ -6,14 +6,14 @@
 #    By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 17:12:04 by kaykin            #+#    #+#              #
-#    Updated: 2024/05/26 10:26:50 by btanir           ###   ########.fr        #
+#    Updated: 2024/05/26 14:47:40 by btanir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= push_swap
 CC			= gcc
 FLAGS 		= -Wall -Wextra -Werror -s
-SRCS		= helper_args.c push_swap.c helper_stack.c error.c check_sort.c
+SRCS		= helper_args.c push_swap.c helper_stack.c error.c check_sort.c actions.c optimiser.c
 
 OBJS		:= $(SRCS:.c=.o)
 
