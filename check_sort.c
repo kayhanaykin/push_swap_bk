@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   check_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 11:28:48 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/26 12:07:39 by btanir           ###   ########.fr       */
+/*   Created: 2024/05/26 10:11:47 by btanir            #+#    #+#             */
+/*   Updated: 2024/05/26 10:28:35 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+int	is_sort(t_list *stack)
 {
-	t_stacks	*stacks;
+	t_list	*temp;
 
-	if (ac < 2)
-		exit(0);
-	stacks = new_stack();
-	stacks->args = parse_args(ac, av);
-	check_args(stacks);
-	add_args_to_stack(stacks);
-	t_list * tmp;
-		tmp = stacks->stack_a;
-	while (tmp)
+	if (!stack)
+		return (0);
+	temp = stack;
+	while (temp->next != NULL)
 	{
-		ft_printf("%d\n",*(int *)(tmp->content));
-		tmp = tmp->next;
+		if ((int)temp->content < (int )temp->next->content)
+			return (0);
+		temp = stack->next;
 	}
-	free(stacks);
-}
-
-void	__attribute__((destructor)) a()
-{
-	system("leaks push_swap");
+	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 11:29:06 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/25 16:29:33 by kaykin           ###   ########.fr       */
+/*   Updated: 2024/05/26 10:54:13 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ typedef struct s_stacks
 }			t_stacks;
 
 char		**parse_args(int ac, char **av);
-t_stacks	*new_stack();
-void		add_args_to_stack(char **args, t_stacks *stacks);
+t_stacks	*new_stack(void);
+void		add_args_to_stack(t_stacks *stacks);
 void		put_error_and_free(char *msg, t_stacks *stacks);
 void		check_args(t_stacks *stacks);
+int			is_sort(t_list *stack);
 #endif

@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+         #
+#    By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 17:12:04 by kaykin            #+#    #+#              #
-#    Updated: 2024/05/25 15:37:01 by kaykin           ###   ########.fr        #
+#    Updated: 2024/05/26 10:26:50 by btanir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= push_swap
 CC			= gcc
 FLAGS 		= -Wall -Wextra -Werror -s
-SRCS		= helper_args.c push_swap.c helper_stack.c error.c
+SRCS		= helper_args.c push_swap.c helper_stack.c error.c check_sort.c
 
 OBJS		:= $(SRCS:.c=.o)
 

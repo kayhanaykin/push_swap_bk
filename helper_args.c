@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_args.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:00:59 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/25 16:40:20 by kaykin           ###   ########.fr       */
+/*   Updated: 2024/05/26 11:28:37 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,24 @@ char	**parse_args(int ac, char **av)
 {
 	int		i;
 	char	*str;
+	char	*temp;
+	char	**result;
 
-	str = "";
+	str = ft_strdup("");
 	i = 0;
 	if (ac == 2)
 		str = av[1];
 	else if (ac > 2)
 		while (++i < ac)
-			str = ft_strjoin(str, ft_strjoin(" ", av[i]));
-	return (ft_split(str, ' '));
+		{
+			temp = ft_strjoin(str, " ");
+			free(str);
+			str = ft_strjoin(temp, av[i]);
+			free(temp);
+		}
+	result = ft_split(str, ' ');
+	free(str);
+	return (result);
 }
 
 void	check_args(t_stacks *stacks)

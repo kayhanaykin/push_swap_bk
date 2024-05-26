@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   helper_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:43:02 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/25 16:29:37 by kaykin           ###   ########.fr       */
+/*   Updated: 2024/05/26 12:20:08 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stacks	*new_stack()
+t_stacks	*new_stack(void)
 {
-	t_stacks *stacks;
+	t_stacks	*stacks;
 
 	stacks = (t_stacks *)malloc(sizeof(t_stacks));
 	if (stacks == NULL)
@@ -24,20 +24,36 @@ t_stacks	*new_stack()
 	}
 	stacks->stack_a = NULL;
 	stacks->stack_b = NULL;
-	stacks->count_a = 0;	
+	stacks->count_a = 0;
 	stacks->count_b = 0;
 	stacks->args = NULL;
-	return stacks;
+	return (stacks);
 }
 
-void	add_args_to_stack(char **args, t_stacks *stacks)
+void	add_args_to_stack(t_stacks *stacks)
 {
-	int i;
-	stacks->stack_a = ft_lstnew((void *)args[1]);
-	i = 2;
+	int		i;
+	char	**args;
+	int		*num;
+
+	args = stacks->args;
+	i = 0;
 	while (args[i])
 	{
-		ft_lstadd_back(&stacks->stack_a, ft_lstnew(args[i]));
-		i++;
+		num = malloc(sizeof(int));
+		if (!num)
+        {
+            put_error_and_free("Memory allocation failed", stacks);
+            return;
+        }
+		*num = ft_atoi(args[i++]);
+		// ft_printf("%d\n", *num);
+		// ft_printf("%p\n", stacks->stack_a);
+		ft_lstadd_back(&stacks->stack_a, ft_lstnew((num)));
+		ft_printf("%d\n", *(int *)stacks->stack_a->content);
+		free(num);
+		// stacks->count_a++;
 	}
+	// if (!is_sort(stacks->stack_a))
+	// 	put_error_and_free("the numbers are already in order", stacks);
 }
