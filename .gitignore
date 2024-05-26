@@ -8,4 +8,5 @@
 push_swap
 
 # Ignore the .vscode directory
+.vscode/*
 .vscode
