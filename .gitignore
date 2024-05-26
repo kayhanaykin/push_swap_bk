@@ -1,0 +1,8 @@
+# Ignore all .a files
+*.a
+
+# Ignore all .o files
+*.o
+
+# Ignore the push_swap file
+push_swap
