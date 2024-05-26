@@ -6,7 +6,7 @@
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 14:10:44 by btanir            #+#    #+#             */
-/*   Updated: 2024/05/26 16:35:15 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/26 17:21:22 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ static void		rotate(t_stacks *stacks, char *str);
 static void		r_rotate(t_stacks *stacks, char *str);
 static t_list	*ft_lst_new_last(t_list *lst);
 static void		push(t_stacks *stacks, char *str);
+static void		swap(t_stacks *stacks, char *str);
 
 void	actions(t_stacks *stacks, char *str)
 {
+	if (str == SA || str == SB || str == SS)
+		swap(stacks, str);
 	if (str == RA || str == RB || str == RR)
 		rotate(stacks, str);
 	if (str == RRA || str == RRB || str == RRR)
@@ -110,4 +113,30 @@ static t_list	*ft_lst_new_last(t_list *lst)
 		lst = lst -> next;
 	}
 	return (new_last);
+}
+
+static void	swap(t_stacks *stacks, char *str)
+{
+	t_list	*temp;
+	t_list	*temp1;
+	t_list	*temp2;
+
+	if (str == SA || str == SS)
+	{
+		temp = stacks->stack_a;
+		temp1 = stacks->stack_a->next;
+		temp2 = stacks->stack_a->next->next;
+		stacks->stack_a = temp1;
+		stacks->stack_a->next = temp;
+		stacks->stack_a->next->next = temp2; 
+	}
+	if (str == SB || str == SS)
+	{
+		temp = stacks->stack_b;
+		temp1 = stacks->stack_b->next;
+		temp2 = stacks->stack_b->next->next;
+		stacks->stack_b = temp1;
+		stacks->stack_b->next = temp;
+		stacks->stack_b->next->next = temp2; 
+	}
 }
