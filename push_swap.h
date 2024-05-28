@@ -6,7 +6,7 @@
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 11:29:06 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/26 15:17:24 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/28 15:31:36 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void		check_args(t_stacks *stacks);
 int			is_sort(t_list *stack);
 void		action_optimise(t_stacks *stacks);
 void		actions(t_stacks *stacks, char *str);
-
+int			min(t_list *stack);
+int			max(t_list *stack);
 
 #endif

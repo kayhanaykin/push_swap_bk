@@ -6,7 +6,7 @@
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 17:43:18 by btanir            #+#    #+#             */
-/*   Updated: 2024/05/26 17:44:34 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/28 15:51:01 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	min(t_list	*stack)
 	int		min;
 
 	temp = stack;
-	min = temp->content;
+	min = *(int *)(temp->content);
 	while (temp)
 	{
 		if (*(int *)(temp->content) < min)
