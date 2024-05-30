@@ -6,7 +6,7 @@
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 14:10:44 by btanir            #+#    #+#             */
-/*   Updated: 2024/05/26 17:21:22 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/30 15:48:47 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,16 @@ static void		swap(t_stacks *stacks, char *str);
 
 void	actions(t_stacks *stacks, char *str)
 {
-	if (str == SA || str == SB || str == SS)
+	if (ft_strncmp(str, "sa", 3) == 0 || ft_strncmp(str, "sb", 3) == 0
+		|| ft_strncmp(str, "ss", 3) == 0)
 		swap(stacks, str);
-	if (str == RA || str == RB || str == RR)
+	else if (ft_strncmp(str, "ra", 3) == 0 || ft_strncmp(str, "rb", 3) == 0
+		|| ft_strncmp(str, "rr", 3) == 0)
 		rotate(stacks, str);
-	if (str == RRA || str == RRB || str == RRR)
+	else if (ft_strncmp(str, "rra", 4) == 0 || ft_strncmp(str, "rrb", 4) == 0
+		|| ft_strncmp(str, "rrr", 4) == 0)
 		r_rotate(stacks, str);
-	if (str == PA || str == PB)
+	else if (ft_strncmp(str, "pa", 3) == 0 || ft_strncmp(str, "pb", 3) == 0)
 		push(stacks, str);
 	ft_printf("%s\n", str);
 }
@@ -35,17 +38,17 @@ static void	rotate(t_stacks *stacks, char *str)
 {
 	t_list	*temp;
 
-	if (str == RA || str == RR)
+	if (ft_strncmp(str, "ra", 3) == 0 || ft_strncmp(str, "rr", 3) == 0)
 	{
 		temp = stacks->stack_a;
 		stacks->stack_a = stacks->stack_a->next;
 		ft_lstlast(stacks->stack_a)->next = temp;
 		temp->next = NULL;
 	}
-	if (str == RB || str == RR)
+	if (ft_strncmp(str, "rb", 3) == 0 || ft_strncmp(str, "rr", 3) == 0)
 	{
 		temp = stacks->stack_b;
-		stacks->stack_a = stacks->stack_b->next;
+		stacks->stack_b = stacks->stack_b->next;
 		ft_lstlast(stacks->stack_b)->next = temp;
 		temp->next = NULL;
 	}
@@ -53,10 +56,10 @@ static void	rotate(t_stacks *stacks, char *str)
 
 static void	r_rotate(t_stacks *stacks, char *str)
 {
-	t_list *temp;
-	t_list *new_last;
+	t_list	*temp;
+	t_list	*new_last;
 
-	if (str == RRA || str == RRR)
+	if (ft_strncmp(str, "rra", 4) == 0 || ft_strncmp(str, "rrr", 4) == 0)
 	{
 		new_last = ft_lst_new_last(stacks->stack_a);
 		temp = ft_lstlast(stacks->stack_a);
@@ -64,13 +67,13 @@ static void	r_rotate(t_stacks *stacks, char *str)
 		new_last->next = NULL;
 		stacks->stack_a = temp;
 	}
-	if (str == RRB || str == RRR)
+	if (ft_strncmp(str, "rrb", 4) == 0 || ft_strncmp(str, "rrr", 4) == 0)
 	{
 		new_last = ft_lst_new_last(stacks->stack_b);
 		temp = ft_lstlast(stacks->stack_b);
 		temp->next = stacks->stack_b;
 		new_last->next = NULL;
-		stacks->stack_a = temp;
+		stacks->stack_b = temp;
 	}
 }
 
@@ -79,8 +82,8 @@ static void	push(t_stacks *stacks, char *str)
 	t_list	*temp;
 	t_list	*temp2;
 
-	if (str == PA)
-	{ 
+	if ( ft_strncmp(str, "pa", 3) == 0)
+	{
 		temp = stacks->stack_a;
 		stacks->stack_a = stacks->stack_b;
 		temp2 = stacks->stack_b->next;
@@ -89,7 +92,7 @@ static void	push(t_stacks *stacks, char *str)
 		stacks->count_a++;
 		stacks->count_b--;
 	}
-	if (str == PB)
+	if (ft_strncmp(str, "pb", 3) == 0)
 	{
 		temp = stacks->stack_b;
 		stacks->stack_b = stacks->stack_a;
@@ -104,13 +107,13 @@ static void	push(t_stacks *stacks, char *str)
 static t_list	*ft_lst_new_last(t_list *lst)
 {
 	t_list	*new_last;
-	
+
 	if (lst == NULL)
 		return (NULL);
-	while (lst -> next != NULL)
+	while (lst->next != NULL)
 	{
 		new_last = lst;
-		lst = lst -> next;
+		lst = lst->next;
 	}
 	return (new_last);
 }
@@ -121,22 +124,22 @@ static void	swap(t_stacks *stacks, char *str)
 	t_list	*temp1;
 	t_list	*temp2;
 
-	if (str == SA || str == SS)
+	if (ft_strncmp(str, "sa", 3) == 0 || ft_strncmp(str, "ss", 3) == 0)
 	{
 		temp = stacks->stack_a;
 		temp1 = stacks->stack_a->next;
 		temp2 = stacks->stack_a->next->next;
 		stacks->stack_a = temp1;
 		stacks->stack_a->next = temp;
-		stacks->stack_a->next->next = temp2; 
+		stacks->stack_a->next->next = temp2;
 	}
-	if (str == SB || str == SS)
+	if (ft_strncmp(str, "sb", 3) == 0 || ft_strncmp(str, "ss", 3) == 0)
 	{
 		temp = stacks->stack_b;
 		temp1 = stacks->stack_b->next;
 		temp2 = stacks->stack_b->next->next;
 		stacks->stack_b = temp1;
 		stacks->stack_b->next = temp;
-		stacks->stack_b->next->next = temp2; 
+		stacks->stack_b->next->next = temp2;
 	}
 }

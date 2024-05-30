@@ -6,7 +6,7 @@
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 11:28:48 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/26 16:36:07 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/30 16:32:14 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 		tmp = tmp->next;
 	}
 		tmp = stacks->stack_b;
-	ft_printf("\n");
+	ft_printf("---------\n");
 	while (tmp)
 	{
 		ft_printf("%d\n",*(int *)(tmp->content));

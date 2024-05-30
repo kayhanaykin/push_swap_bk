@@ -6,40 +6,53 @@
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 17:43:18 by btanir            #+#    #+#             */
-/*   Updated: 2024/05/28 15:51:01 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/30 11:58:10 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	max(t_list *stack)
+int	max_stack(t_list *stack)
 {
 	t_list	*temp;
-	int		max;
+	int		max_stack;
 
 	temp = stack;
-	max = 0;
+	max_stack = 0;
 	while (temp)
 	{
-		if (*(int *)(temp->content) > max)
-			max = *(int *)(temp->content);
+		if (*(int *)(temp->content) > max_stack)
+			max_stack = *(int *)(temp->content);
 		temp = temp->next;
 	}
-	return (max);
+	return (max_stack);
 }
 
-int	min(t_list	*stack)
+int	min_stack(t_list	*stack)
 {
 	t_list	*temp;
-	int		min;
+	int		min_stack;
 
 	temp = stack;
-	min = *(int *)(temp->content);
+	min_stack = *(int *)(temp->content);
 	while (temp)
 	{
-		if (*(int *)(temp->content) < min)
-			min = *(int *)(temp->content);
+		if (*(int *)(temp->content) < min_stack)
+			min_stack = *(int *)(temp->content);
 		temp = temp->next;
 	}
-	return (min);
+	return (min_stack);
+}
+int	min(int a, int b)
+{
+	if (a > b)
+		return (b);
+	return (a);
+}
+
+int	max(int a, int b)
+{
+	if (a < b)
+		return (b);
+	return (a);
 }
