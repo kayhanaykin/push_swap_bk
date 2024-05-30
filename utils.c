@@ -6,42 +6,42 @@
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 17:43:18 by btanir            #+#    #+#             */
-/*   Updated: 2024/05/30 11:58:10 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/30 20:39:48 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	max_stack(t_list *stack)
+t_list	*max_stack(t_list *stack)
 {
 	t_list	*temp;
-	int		max_stack;
+	t_list	*ret;
 
 	temp = stack;
-	max_stack = 0;
+	ret = stack;
 	while (temp)
 	{
-		if (*(int *)(temp->content) > max_stack)
-			max_stack = *(int *)(temp->content);
+		if (*(int *)(temp->content) > *(int *)(ret->content))
+			ret = temp;
 		temp = temp->next;
 	}
-	return (max_stack);
+	return (ret);
 }
 
-int	min_stack(t_list	*stack)
+t_list	*min_stack(t_list *stack)
 {
 	t_list	*temp;
-	int		min_stack;
+	t_list	*ret;
 
 	temp = stack;
-	min_stack = *(int *)(temp->content);
+	ret = temp;
 	while (temp)
 	{
-		if (*(int *)(temp->content) < min_stack)
-			min_stack = *(int *)(temp->content);
+		if (*(int *)(temp->content) < *(int *)(ret->content))
+			ret = temp;
 		temp = temp->next;
 	}
-	return (min_stack);
+	return (ret);
 }
 int	min(int a, int b)
 {
