@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:43:02 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/31 14:40:44 by kaykin           ###   ########.fr       */
+/*   Updated: 2024/05/31 15:03:38 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,8 @@ void	add_args_to_stack(t_stacks *stacks)
 		num = (int *)malloc(sizeof(int));
 		if (num == NULL)
 			put_error_and_free("Error: Allocation Failure", stacks);
-		*num = ft_atoi(args[i]);
+		*num = ft_atoi(args[i++]);
 		ft_lstadd_back(&stacks->stack_a, ft_lstnew(num));
-		free(num);
-		free(args[i++]);
 		stacks->count_a++;
 	}
-	free(args);
 }
