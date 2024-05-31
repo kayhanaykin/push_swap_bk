@@ -6,7 +6,7 @@
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:43:02 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/31 15:03:38 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/31 15:04:46 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_stacks	*new_stacks(void)
 	stacks = (t_stacks *)malloc(sizeof(t_stacks));
 	if (stacks == NULL)
 	{
-		ft_printf("Error: Allocation Failure\n");
+		ft_printf("Allocation Failure\n");
 		exit(-1);
 	}
 	stacks->stack_a = NULL;
@@ -48,7 +48,7 @@ void	add_args_to_stack(t_stacks *stacks)
 	{
 		num = (int *)malloc(sizeof(int));
 		if (num == NULL)
-			put_error_and_free("Error: Allocation Failure", stacks);
+			put_error_and_free("Allocation Failure", stacks);
 		*num = ft_atoi(args[i++]);
 		ft_lstadd_back(&stacks->stack_a, ft_lstnew(num));
 		stacks->count_a++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 11:28:48 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/31 14:42:54 by kaykin           ###   ########.fr       */
+/*   Updated: 2024/05/31 19:34:44 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,3 @@ int	main(int ac, char **av)
 	add_args_to_stack(stacks);
 	action_optimise(stacks);
 }
-// void	__attribute__((destructor)) b()
-// {
-// 	system("leaks push_swap");
-// }

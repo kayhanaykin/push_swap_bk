@@ -6,34 +6,45 @@
 #    By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 17:12:04 by kaykin            #+#    #+#              #
-#    Updated: 2024/05/26 17:44:07 by btanir           ###   ########.fr        #
+#    Updated: 2024/05/31 19:52:32 by btanir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= push_swap
 CC			= gcc
-FLAGS 		= -Wall -Wextra -Werror -s
-SRCS		= helper_args.c push_swap.c helper_stack.c error.c check_sort.c actions.c optimiser.c utils.c
+FLAGS 		= -Wall -Wextra -Werror 
+SRCS		= optimiser.c adv_sort_utils.c error.c\
+			adv_sort_utils2.c push_swap.c actions.c check_args.c
+SRCS_SHARED	= parse_args.c helper_stack.c \
+			check_sort.c utils.c 
+SRCS_BNS	= checker_bonus.c actions_bonus.c check_args_bonus.c \
+			error_bonus.c
 
 OBJS		:= $(SRCS:.c=.o)
+OBJS_SHARED	:= $(SRCS_SHARED:.c=.o)
+OBJS_BNS	:= $(SRCS_BNS:.c=.o)
 
 AR_LIBFT	= libft/libft.a
 DIR_LIBFT	= libft
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(OBJS_SHARED) 
 	make bonus -C $(DIR_LIBFT) -s
-	$(CC) $(FLAGS) $(OBJS) $(AR_LIBFT) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJS) $(OBJS_SHARED) $(AR_LIBFT) -o $(NAME)
 
 clean:
-			rm -f $(OBJS)
-			make -s -C $(DIR_LIBFT) clean
+	rm -f $(OBJS) $(OBJS_SHARED) $(BNS_OBJS)
+	make -s -C $(DIR_LIBFT) clean
 
 fclean: clean
-			rm -f $(NAME)
-			make -s -C $(DIR_LIBFT) fclean
+	rm -f $(NAME) checker
+	make -s -C $(DIR_LIBFT) fclean
 
+bonus:	$(OBJS_SHARED) $(OBJS_BNS)
+	make bonus -C $(DIR_LIBFT) -s
+	$(CC) $(FLAGS) $(OBJS_SHARED) $(OBJS_BNS) $(AR_LIBFT) -o checker
+	
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean bonus re

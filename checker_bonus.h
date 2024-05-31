@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 11:29:06 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/31 17:41:52 by btanir           ###   ########.fr       */
+/*   Created: 2024/05/31 18:00:59 by btanir            #+#    #+#             */
+/*   Updated: 2024/05/31 19:49:42 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 # include "./libft/libft.h"
 # include <stdlib.h>
 
@@ -34,7 +33,7 @@ typedef struct s_stacks
 t_stacks	*new_stacks(void);
 char		**parse_args(int ac, char **av, t_stacks *stacks);
 void		add_args_to_stack(t_stacks *stacks);
-void		put_error_and_free(char *msg, t_stacks *stacks);
+void		put_error_and_free(t_stacks *stacks);
 void		check_args(t_stacks *stacks);
 int			is_sort(t_list *stack);
 int			is_reverse_sort(t_list *stack);

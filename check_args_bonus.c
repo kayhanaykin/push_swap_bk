@@ -1,46 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper_args.c                                      :+:      :+:    :+:   */
+/*   check_args_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 12:00:59 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/31 13:58:29 by kaykin           ###   ########.fr       */
+/*   Created: 2024/05/31 15:29:20 by btanir            #+#    #+#             */
+/*   Updated: 2024/05/31 19:50:21 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
-char	**parse_args(int ac, char **av, t_stacks *stacks)
+static void	check_args_is_number(t_stacks *stacks);
+static void	check_args_is_duplicate(t_stacks *stacks);
+
+void	check_args(t_stacks *stacks)
 {
-	int		i;
-	char	*str;
-	char	*temp;
-	char	**result;
-
-	i = 0;
-	if (ac == 2)
-		str = ft_strdup(av[1]);
-	else if (ac > 2)
-	{
-		str = ft_strdup("");
-		while (++i < ac)
-		{
-			temp = ft_strjoin(str, " ");
-			free(str);
-			str = ft_strjoin(temp, av[i]);
-			free(temp);
-		}
-	}
-	if (ft_strlen(str) < 2)
-	{
-		free(stacks);
-		free(str);
-		exit(0);
-	}
-	result = ft_split(str, ' ');
-	return (free(str), result);
+	check_args_is_number(stacks);
+	check_args_is_duplicate(stacks);
 }
 
 static void	check_args_is_number(t_stacks *stacks)
@@ -60,7 +38,7 @@ static void	check_args_is_number(t_stacks *stacks)
 		while (args[i][j])
 		{
 			if (!(args[i][j] >= '0' && args[i][j] <= '9'))
-				put_error_and_free("Non-numerical data", stacks);
+				put_error_and_free(stacks);
 			j++;
 		}
 		i++;
@@ -81,15 +59,9 @@ static void	check_args_is_duplicate(t_stacks *stacks)
 		while (args[j])
 		{
 			if (ft_atoi(args[j]) == ft_atoi(args[i]))
-				put_error_and_free("Duplicate data", stacks);
+				put_error_and_free(stacks);
 			j++;
 		}
 		i++;
 	}
-}
-
-void	check_args(t_stacks *stacks)
-{
-	check_args_is_number(stacks);
-	check_args_is_duplicate(stacks);
 }

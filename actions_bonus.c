@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   actions.c                                          :+:      :+:    :+:   */
+/*   actions_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 14:10:44 by btanir            #+#    #+#             */
-/*   Updated: 2024/05/31 17:27:03 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/31 19:44:30 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	actions(t_stacks *stacks, char *str)
 		r_rotate(stacks, str);
 	else if (ft_strncmp(str, "pa", 3) == 0 || ft_strncmp(str, "pb", 3) == 0)
 		push(stacks, str);
-	ft_printf("%s\n", str);
 }
 
 static void	rotate(t_stacks *stacks, char *str)
