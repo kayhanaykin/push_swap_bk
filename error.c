@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:51:52 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/26 10:48:00 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/31 13:50:04 by kaykin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void	put_error_and_free(char *msg, t_stacks *stacks)
 	free(stacks->args);
 	free_stack(stacks->stack_a, stacks->count_a);
 	free_stack(stacks->stack_b, stacks->count_b);
+	free(stacks);
 	put_error(msg);
 }

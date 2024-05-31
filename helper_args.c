@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   helper_args.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:00:59 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/26 14:42:47 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/31 13:58:29 by kaykin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**parse_args(int ac, char **av)
+char	**parse_args(int ac, char **av, t_stacks *stacks)
 {
 	int		i;
 	char	*str;
@@ -20,10 +20,11 @@ char	**parse_args(int ac, char **av)
 	char	**result;
 
 	i = 0;
-	str = ft_strdup("");
 	if (ac == 2)
 		str = ft_strdup(av[1]);
 	else if (ac > 2)
+	{
+		str = ft_strdup("");
 		while (++i < ac)
 		{
 			temp = ft_strjoin(str, " ");
@@ -31,14 +32,15 @@ char	**parse_args(int ac, char **av)
 			str = ft_strjoin(temp, av[i]);
 			free(temp);
 		}
+	}
 	if (ft_strlen(str) < 2)
 	{
+		free(stacks);
 		free(str);
 		exit(0);
 	}
 	result = ft_split(str, ' ');
-	free(str);
-	return (result);
+	return (free(str), result);
 }
 
 static void	check_args_is_number(t_stacks *stacks)

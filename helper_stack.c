@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   helper_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:43:02 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/26 14:31:59 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/31 14:40:44 by kaykin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stacks	*new_stack(void)
+t_stacks	*new_stacks(void)
 {
 	t_stacks	*stacks;
 
@@ -27,6 +27,12 @@ t_stacks	*new_stack(void)
 	stacks->count_a = 0;
 	stacks->count_b = 0;
 	stacks->args = NULL;
+	stacks->ra = 0;
+	stacks->rb = 0;
+	stacks->rr = 0;
+	stacks->rra = 0;
+	stacks->rrb = 0;
+	stacks->rrr = 0;
 	return (stacks);
 }
 
@@ -43,8 +49,11 @@ void	add_args_to_stack(t_stacks *stacks)
 		num = (int *)malloc(sizeof(int));
 		if (num == NULL)
 			put_error_and_free("Error: Allocation Failure", stacks);
-		*num = ft_atoi(args[i++]);
+		*num = ft_atoi(args[i]);
 		ft_lstadd_back(&stacks->stack_a, ft_lstnew(num));
+		free(num);
+		free(args[i++]);
 		stacks->count_a++;
 	}
+	free(args);
 }

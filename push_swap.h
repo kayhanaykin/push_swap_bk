@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 11:29:06 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/30 19:57:27 by btanir           ###   ########.fr       */
+/*   Updated: 2024/05/31 13:46:42 by kaykin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,19 @@ typedef struct s_stacks
 	int		rrr;
 }			t_stacks;
 
-char		**parse_args(int ac, char **av);
-t_stacks	*new_stack(void);
+t_stacks	*new_stacks(void);
+char		**parse_args(int ac, char **av, t_stacks *stacks);
 void		add_args_to_stack(t_stacks *stacks);
 void		put_error_and_free(char *msg, t_stacks *stacks);
 void		check_args(t_stacks *stacks);
 int			is_sort(t_list *stack);
+int			is_reverse_sort(t_list *stack);
 void		action_optimise(t_stacks *stacks);
 void		actions(t_stacks *stacks, char *str);
 t_list		*min_stack(t_list *stack);
 t_list		*max_stack(t_list *stack);
 int			min(int a, int b);
 int			max(int a, int b);
+// void		a(t_stacks *stacks);
+
 #endif
