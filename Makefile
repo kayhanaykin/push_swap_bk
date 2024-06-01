@@ -6,7 +6,7 @@
 #    By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 17:12:04 by kaykin            #+#    #+#              #
-#    Updated: 2024/06/01 13:57:19 by btanir           ###   ########.fr        #
+#    Updated: 2024/06/01 14:03:21 by btanir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ fclean: clean
 	rm -f $(NAME) checker
 	make -s -C $(DIR_LIBFT) fclean
 
-bonus:	$(OBJS_SHARED) $(OBJS_BNS)
+bonus: all	$(OBJS_SHARED) $(OBJS_BNS)
 	make bonus -C $(DIR_LIBFT) -s
 	$(CC) $(FLAGS) $(OBJS_SHARED) $(OBJS_BNS) $(AR_LIBFT) -o checker
 	
