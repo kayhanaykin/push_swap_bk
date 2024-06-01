@@ -7,6 +7,12 @@
 # Ignore the push_swap file
 push_swap
 
+# Ignore the checker file
+checker
+
+# Ignore the checker file
+checker_Mac
+
 # Ignore the .vscode directory
 .vscode/*
 .vscode

@@ -6,13 +6,13 @@
 /*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:51:52 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/31 19:53:25 by btanir           ###   ########.fr       */
+/*   Updated: 2024/06/01 14:02:14 by btanir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-static void	put_error();
+static void	put_error(void);
 static void	free_stack(t_list *stack, int count);
 
 void	put_error_and_free(t_stacks *stacks)
@@ -29,7 +29,7 @@ void	put_error_and_free(t_stacks *stacks)
 	put_error();
 }
 
-static void	put_error()
+static void	put_error(void)
 {
 	ft_printf("Error\n");
 	exit(-1);

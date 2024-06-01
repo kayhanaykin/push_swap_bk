@@ -6,19 +6,19 @@
 #    By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 17:12:04 by kaykin            #+#    #+#              #
-#    Updated: 2024/05/31 19:52:32 by btanir           ###   ########.fr        #
+#    Updated: 2024/06/01 13:57:19 by btanir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= push_swap
 CC			= gcc
 FLAGS 		= -Wall -Wextra -Werror 
-SRCS		= optimiser.c adv_sort_utils.c error.c\
+SRCS		= optimiser.c adv_sort_utils.c error.c parse_args.c\
 			adv_sort_utils2.c push_swap.c actions.c check_args.c
-SRCS_SHARED	= parse_args.c helper_stack.c \
+SRCS_SHARED	=  helper_stack.c \
 			check_sort.c utils.c 
 SRCS_BNS	= checker_bonus.c actions_bonus.c check_args_bonus.c \
-			error_bonus.c
+			error_bonus.c parse_args_bonus.c
 
 OBJS		:= $(SRCS:.c=.o)
 OBJS_SHARED	:= $(SRCS_SHARED:.c=.o)
@@ -34,7 +34,7 @@ $(NAME): $(OBJS) $(OBJS_SHARED)
 	$(CC) $(FLAGS) $(OBJS) $(OBJS_SHARED) $(AR_LIBFT) -o $(NAME)
 
 clean:
-	rm -f $(OBJS) $(OBJS_SHARED) $(BNS_OBJS)
+	rm -f $(OBJS) $(OBJS_SHARED) $(OBJS_BNS)
 	make -s -C $(DIR_LIBFT) clean
 
 fclean: clean
