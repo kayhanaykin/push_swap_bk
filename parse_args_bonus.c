@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 12:00:59 by kaykin            #+#    #+#             */
-/*   Updated: 2024/06/01 13:57:39 by btanir           ###   ########.fr       */
+/*   Created: 2024/06/03 17:58:49 by kaykin            #+#    #+#             */
+/*   Updated: 2024/06/03 17:58:51 by kaykin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

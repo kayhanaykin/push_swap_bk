@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 12:43:02 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/31 15:04:46 by btanir           ###   ########.fr       */
+/*   Created: 2024/06/03 17:58:29 by kaykin            #+#    #+#             */
+/*   Updated: 2024/06/03 18:01:12 by kaykin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_stacks	*new_stacks(void)
 	stacks = (t_stacks *)malloc(sizeof(t_stacks));
 	if (stacks == NULL)
 	{
-		ft_printf("Allocation Failure\n");
+		ft_printf("Error\n");
 		exit(-1);
 	}
 	stacks->stack_a = NULL;
@@ -48,9 +48,11 @@ void	add_args_to_stack(t_stacks *stacks)
 	{
 		num = (int *)malloc(sizeof(int));
 		if (num == NULL)
-			put_error_and_free("Allocation Failure", stacks);
-		*num = ft_atoi(args[i++]);
+			put_error_and_free(stacks);
+		*num = ft_atoi(args[i]);
+		free(args[i++]);
 		ft_lstadd_back(&stacks->stack_a, ft_lstnew(num));
 		stacks->count_a++;
 	}
+	free(stacks->args);
 }

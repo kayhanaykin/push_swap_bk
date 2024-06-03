@@ -3,21 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   check_args_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/31 15:29:20 by btanir            #+#    #+#             */
-/*   Updated: 2024/05/31 19:50:21 by btanir           ###   ########.fr       */
+/*   Created: 2024/06/03 17:57:47 by kaykin            #+#    #+#             */
+/*   Updated: 2024/06/03 17:57:49 by kaykin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-static void	check_args_is_number(t_stacks *stacks);
-static void	check_args_is_duplicate(t_stacks *stacks);
+static void		check_args_is_number(t_stacks *stacks);
+static void		check_args_is_duplicate(t_stacks *stacks);
+static void		check_is_int(t_stacks *stacks);
+static long int	ft_atol(const char *str);
 
 void	check_args(t_stacks *stacks)
 {
 	check_args_is_number(stacks);
+	check_is_int(stacks);
 	check_args_is_duplicate(stacks);
 }
 
@@ -64,4 +67,48 @@ static void	check_args_is_duplicate(t_stacks *stacks)
 		}
 		i++;
 	}
+}
+
+static void	check_is_int(t_stacks *stacks)
+{
+	int			i;
+	char		**args;
+
+	i = 0;
+	args = stacks->args;
+	while (args[i])
+	{
+		if (ft_atol(args[i]) > INTMAX || ft_atol(args[i]) < INTMIN)
+			put_error_and_free(stacks);
+		i++;
+	}
+}
+
+static long int	ft_atol(const char *str)
+{
+	int			i;
+	int			mult;
+	long int	nb;
+
+	mult = 1;
+	nb = 0;
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\n'
+		|| str[i] == '\r' || str[i] == '\t' || str[i] == '\v')
+	{
+		i++;
+	}
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			mult *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = (nb * 10) + (str[i] - '0');
+		i++;
+	}
+	nb *= mult;
+	return (nb);
 }

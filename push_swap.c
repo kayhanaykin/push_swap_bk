@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 11:28:48 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/31 19:34:44 by btanir           ###   ########.fr       */
+/*   Created: 2024/06/03 17:58:59 by kaykin            #+#    #+#             */
+/*   Updated: 2024/06/03 17:59:49 by kaykin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,6 @@ int	main(int ac, char **av)
 	check_args(stacks);
 	add_args_to_stack(stacks);
 	action_optimise(stacks);
+	free_stack(stacks->stack_a);
+	free(stacks);
 }

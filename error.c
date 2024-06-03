@@ -3,19 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 12:51:52 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/31 17:01:45 by btanir           ###   ########.fr       */
+/*   Created: 2024/06/03 17:58:22 by kaykin            #+#    #+#             */
+/*   Updated: 2024/06/03 17:58:24 by kaykin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	put_error(char *msg);
-static void	free_stack(t_list *stack, int count);
-
-void	put_error_and_free(char *msg, t_stacks *stacks)
+void	put_error_and_free(t_stacks *stacks)
 {
 	int	i;
 
@@ -23,28 +20,24 @@ void	put_error_and_free(char *msg, t_stacks *stacks)
 	while (stacks->args[i])
 		free(stacks->args[i++]);
 	free(stacks->args);
-	free_stack(stacks->stack_a, stacks->count_a);
-	free_stack(stacks->stack_b, stacks->count_b);
+	free_stack(stacks->stack_a);
+	free_stack(stacks->stack_b);
 	free(stacks);
-	put_error(msg);
-}
-
-static void	put_error(char *msg)
-{
-	ft_printf("Error: %s\n", msg);
+	ft_printf("Error\n");
 	exit(-1);
 }
 
-static void	free_stack(t_list *stack, int count)
+void	free_stack(t_list *stack)
 {
+	t_list	*node;
 	t_list	*temp;
 
-	temp = stack;
-	while (temp)
+	node = stack;
+	while (node)
 	{
-		free(temp->content);
-		temp = temp->next;
+		free(node->content);
+		temp = node;
+		node = node->next;
+		free (temp);
 	}
-	if (count != 0)
-		free(temp);
 }

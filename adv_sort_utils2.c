@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   adv_sort_utils2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/31 17:41:37 by btanir            #+#    #+#             */
-/*   Updated: 2024/05/31 17:51:50 by btanir           ###   ########.fr       */
+/*   Created: 2024/06/03 17:57:41 by kaykin            #+#    #+#             */
+/*   Updated: 2024/06/03 17:57:43 by kaykin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static void	double_action(t_stacks *stacks)
 		temp = min(stacks->ra, stacks->rb);
 		while (temp-- > 0)
 			actions(stacks, "rr");
-		while (stacks->rr > stacks->ra)
+		while (stacks->rr > stacks->ra++)
 			actions(stacks, "rb");
-		while (stacks->rr > stacks->rb)
+		while (stacks->rr > stacks->rb++)
 			actions(stacks, "ra");
 	}
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 11:29:06 by kaykin            #+#    #+#             */
-/*   Updated: 2024/05/31 17:41:52 by btanir           ###   ########.fr       */
+/*   Created: 2024/06/03 17:59:04 by kaykin            #+#    #+#             */
+/*   Updated: 2024/06/03 17:59:06 by kaykin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include "./libft/libft.h"
 # include <stdlib.h>
+
+# define INTMAX 2147483647 
+# define INTMIN -2147483648
 
 typedef struct s_stacks
 {
@@ -34,7 +37,8 @@ typedef struct s_stacks
 t_stacks	*new_stacks(void);
 char		**parse_args(int ac, char **av, t_stacks *stacks);
 void		add_args_to_stack(t_stacks *stacks);
-void		put_error_and_free(char *msg, t_stacks *stacks);
+void		put_error_and_free(t_stacks *stacks);
+void		free_stack(t_list *stack);
 void		check_args(t_stacks *stacks);
 int			is_sort(t_list *stack);
 int			is_reverse_sort(t_list *stack);

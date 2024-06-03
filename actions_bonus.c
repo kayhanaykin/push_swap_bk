@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btanir <btanir@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: kaykin <kaykin@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/26 14:10:44 by btanir            #+#    #+#             */
-/*   Updated: 2024/05/31 19:44:30 by btanir           ###   ########.fr       */
+/*   Created: 2024/06/03 16:15:20 by kaykin            #+#    #+#             */
+/*   Updated: 2024/06/03 17:57:12 by kaykin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ static void	swap(t_stacks *stacks, char *str);
 
 void	actions(t_stacks *stacks, char *str)
 {
-	if (ft_strncmp(str, "sa", 3) == 0 || ft_strncmp(str, "sb", 3) == 0
-		|| ft_strncmp(str, "ss", 3) == 0)
+	if (ft_strncmp(str, "sa\n", 4) == 0 || ft_strncmp(str, "sb\n", 4) == 0
+		|| ft_strncmp(str, "ss\n", 4) == 0)
 		swap(stacks, str);
-	else if (ft_strncmp(str, "ra", 3) == 0 || ft_strncmp(str, "rb", 3) == 0
-		|| ft_strncmp(str, "rr", 3) == 0)
+	else if (ft_strncmp(str, "ra\n", 4) == 0 || ft_strncmp(str, "rb\n", 4) == 0
+		|| ft_strncmp(str, "rr\n", 4) == 0)
 		rotate(stacks, str);
-	else if (ft_strncmp(str, "rra", 4) == 0 || ft_strncmp(str, "rrb", 4) == 0
-		|| ft_strncmp(str, "rrr", 4) == 0)
+	else if (ft_strncmp(str, "rra\n", 5) == 0 || ft_strncmp(str, "rrb\n",
+			5) == 0 || ft_strncmp(str, "rrr\n", 5) == 0)
 		r_rotate(stacks, str);
-	else if (ft_strncmp(str, "pa", 3) == 0 || ft_strncmp(str, "pb", 3) == 0)
+	else if (ft_strncmp(str, "pa\n", 4) == 0 || ft_strncmp(str, "pb\n", 4) == 0)
 		push(stacks, str);
 }
 
@@ -36,14 +36,14 @@ static void	rotate(t_stacks *stacks, char *str)
 {
 	t_list	*temp;
 
-	if (ft_strncmp(str, "ra", 3) == 0 || ft_strncmp(str, "rr", 3) == 0)
+	if (ft_strncmp(str, "ra\n", 4) == 0 || ft_strncmp(str, "rr\n", 4) == 0)
 	{
 		temp = stacks->stack_a;
 		stacks->stack_a = stacks->stack_a->next;
 		ft_lstlast(stacks->stack_a)->next = temp;
 		temp->next = NULL;
 	}
-	if (ft_strncmp(str, "rb", 3) == 0 || ft_strncmp(str, "rr", 3) == 0)
+	if (ft_strncmp(str, "rb\n", 4) == 0 || ft_strncmp(str, "rr\n", 4) == 0)
 	{
 		temp = stacks->stack_b;
 		stacks->stack_b = stacks->stack_b->next;
@@ -57,7 +57,7 @@ static void	r_rotate(t_stacks *stacks, char *str)
 	t_list	*temp;
 	t_list	*new_last;
 
-	if (ft_strncmp(str, "rra", 4) == 0 || ft_strncmp(str, "rrr", 4) == 0)
+	if (ft_strncmp(str, "rra\n", 5) == 0 || ft_strncmp(str, "rrr\n", 5) == 0)
 	{
 		new_last = ft_lst_new_last(stacks->stack_a);
 		temp = ft_lstlast(stacks->stack_a);
@@ -65,7 +65,7 @@ static void	r_rotate(t_stacks *stacks, char *str)
 		new_last->next = NULL;
 		stacks->stack_a = temp;
 	}
-	if (ft_strncmp(str, "rrb", 4) == 0 || ft_strncmp(str, "rrr", 4) == 0)
+	if (ft_strncmp(str, "rrb\n", 5) == 0 || ft_strncmp(str, "rrr\n", 5) == 0)
 	{
 		new_last = ft_lst_new_last(stacks->stack_b);
 		temp = ft_lstlast(stacks->stack_b);
@@ -80,7 +80,7 @@ static void	push(t_stacks *stacks, char *str)
 	t_list	*temp;
 	t_list	*temp2;
 
-	if (ft_strncmp(str, "pa", 3) == 0)
+	if (ft_strncmp(str, "pa\n", 4) == 0)
 	{
 		temp = stacks->stack_a;
 		stacks->stack_a = stacks->stack_b;
@@ -90,7 +90,7 @@ static void	push(t_stacks *stacks, char *str)
 		stacks->count_a++;
 		stacks->count_b--;
 	}
-	if (ft_strncmp(str, "pb", 3) == 0)
+	if (ft_strncmp(str, "pb\n", 4) == 0)
 	{
 		temp = stacks->stack_b;
 		stacks->stack_b = stacks->stack_a;
@@ -108,7 +108,7 @@ static void	swap(t_stacks *stacks, char *str)
 	t_list	*temp1;
 	t_list	*temp2;
 
-	if (ft_strncmp(str, "sa", 3) == 0 || ft_strncmp(str, "ss", 3) == 0)
+	if (ft_strncmp(str, "sa\n", 4) == 0 || ft_strncmp(str, "ss\n", 4) == 0)
 	{
 		temp = stacks->stack_a;
 		temp1 = stacks->stack_a->next;
@@ -117,7 +117,7 @@ static void	swap(t_stacks *stacks, char *str)
 		stacks->stack_a->next = temp;
 		stacks->stack_a->next->next = temp2;
 	}
-	if (ft_strncmp(str, "sb", 3) == 0 || ft_strncmp(str, "ss", 3) == 0)
+	if (ft_strncmp(str, "sb\n", 4) == 0 || ft_strncmp(str, "ss\n", 4) == 0)
 	{
 		temp = stacks->stack_b;
 		temp1 = stacks->stack_b->next;
